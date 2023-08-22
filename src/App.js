@@ -9,9 +9,9 @@ function App() {
     <Router>
     <Nav/>
     <Routes>
-      <Route exact path='/' element={<Home operationName={"wordCounter"}/>}/>
-      <Route exact path='/uppercase' element={<Home operationName={"uppercase"}/>}/>
-      <Route exact path='/lowercase' element={<Home operationName={"lowercase"}/>}/>
+      <Route exact path='/' element={<Home operationName={"wordCounter"} />}/>
+      <Route exact path='/uppercase' element={<Home operationName={"uppercase"}btName={"Upper Case"}/>}/>
+      <Route exact path='/lowercase' element={<Home operationName={"lowercase"} btName={"Lower Case"}/>}/>
       <Route exact path='/removeextraspace' element={<Home operationName={"removeExtraSpace"}/>}/>
       <Route exact path='/replacewords' element={<Home operationName={"replaceWords"}/>}/>
       <Route exact path='/convertwords' element={<Home operationName={"convertWords"}/>}/>
