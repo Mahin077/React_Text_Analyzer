@@ -34,6 +34,16 @@ function Home(props) {
             let newText = text.split(/ +/);
             setText(newText.join(" "));
         }
+        //replace words
+        else if (props.operationName === "replaceWords") {
+            let oldWord = document.getElementById("tb1").value
+            let newWord = document.getElementById("tb2").value
+            if (oldWord.length !== 0 && newWord.length !== 0) {
+                let oldWordSt = new RegExp(oldWord, "gi");
+                let newText = text.replace(oldWordSt, newWord);
+                setText(newText);
+            }
+        }
     }
 
     return (
@@ -48,7 +58,7 @@ function Home(props) {
                         </div>
                         <div className="d-flex justify-content-between">
                             {props.operationName === "wordCounter" && (<button className={`btn btn-primary`} onClick={listenButton} style={{ marginLeft: 7 }} ><i className="fa-solid fa-volume-high"></i><span style={{ marginLeft: 7 }}>Listen</span></button>)}
-                            {props.operationName !== "wordCounter" && (<button className={`btn btn-primary`} onClick={opertaionButton} style={{ marginLeft: 7 }} ><i class="fa-solid fa-gears"></i><span style={{ marginLeft: 7 }}>{props.btName}</span></button>)}
+                            {props.operationName !== "wordCounter" && (<button className={`btn btn-primary`} onClick={opertaionButton} style={{ marginLeft: 7 }} ><i className="fa-solid fa-gears"></i><span style={{ marginLeft: 7 }}>{props.btName}</span></button>)}
                             <button className={`btn btn-primary`} onClick={clearButton} style={{ marginRight: 7 }} ><i className="fa-solid fa-trash"></i><span style={{ marginLeft: 7 }}>Clear</span></button>
 
                         </div>
@@ -60,6 +70,20 @@ function Home(props) {
                 <div className="container my-5">
                     <h1>Text summary</h1>
                     <p style={{ fontSize: 20, marginLeft: 5 }}>There are {text.split(/\s+/).filter((element) => { return element.length !== 0 }).length} words and {text.replace(/\s/g, '').length} characters</p>
+                </div>
+            )}
+
+            {props.operationName === "replaceWords" && (
+
+                <div className="container my-5">
+                    <div className="card">
+                        <div className="card-body">
+                            <label className="my-2" style={{ fontSize: 18, marginLeft: 7 }}>Old Word</label>
+                            <textarea id="tb1" placeholder='write the old word that need be to replace' className="form-control" rows={1}></textarea>
+                            <label className="my-2 mt-5" style={{ fontSize: 18, marginLeft: 7 }}>New Word</label>
+                            <textarea id="tb2" placeholder='write the new word that you want to use in the text' className="form-control" rows={1}></textarea>
+                        </div>
+                    </div>
                 </div>
             )}
         </>
