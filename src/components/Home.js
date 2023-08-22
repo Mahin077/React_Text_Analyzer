@@ -44,6 +44,11 @@ function Home(props) {
                 setText(newText);
             }
         }
+        //convert to words
+        else if (props.operationName === "convertWords") {
+            let newText = text.split(" ");
+            setText(newText.join("\n"));
+        }
     }
 
     return (
@@ -52,7 +57,7 @@ function Home(props) {
                 <div className="card-body">
                     <div className="container">
 
-                        <h3 className='my-3 text-center'>You can find out total words and characters of your given text</h3>
+                        <h3 className='my-3 text-center'>{props.title}</h3>
                         <div className="my-3">
                             <textarea className="form-control" onChange={textAreaChange} value={text} rows={15} placeholder='Write something'></textarea>
                         </div>
