@@ -29,7 +29,11 @@ function Home(props) {
             let newText = text.toLowerCase();
             setText(newText);
         }
-        
+        //remove extra space button
+        else if (props.operationName === "removeExtraSpace") {
+            let newText = text.split(/ +/);
+            setText(newText.join(" "));
+        }
     }
 
     return (
